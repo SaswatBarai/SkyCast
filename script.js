@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let btn = document.getElementById("btn")
 let input = document.getElementById("city");
 const API_KEY = "92ec64fd8a91ae9db1d5d1dc6456dd91";
@@ -34,3 +35,5 @@ btn.addEventListener("click",(e)=>{
 })
 
 
+=======
+>>>>>>> 424012f937ed1631933ce2f361959887ffcfa601
