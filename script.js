@@ -13,7 +13,7 @@ fetch(url)
 //convert the response to json.. while dealing with apis json returns a structured data
     .then(response => response.json())
     .then(data => {
-        document.getElementById("weather-info").inerHTML = `
+        document.getElementById("weather-info").innerHTML = `
         
         `
     })
