@@ -1,19 +1,36 @@
-const API_KEY = "4e589bbd2b8645c5973115928251602";
-const url = `https://www.weatherapi.com/`;
-function getWeather(){
-    const city = document.getElementById("city").value;
+let btn = document.getElementById("btn")
+let input = document.getElementById("city");
+const API_KEY = "92ec64fd8a91ae9db1d5d1dc6456dd91";
 
-    if(!city){
-        alert("Please enter a city name");
-        return;
+
+//for api call and fecting data
+const getData = async (city) => {
+    try {
+
+        //future ke liya agar dusra city dalna hoga toh woh first search box search box se city name remove kr dega  
+        input.value = ""; 
+        console.log("Fetching data for:", city);
+
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+        if (!response.ok) {
+            throw new Error("City not found!");
+        }
+
+        let data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error("Error milgaya: ",error.message);
+        alert("Failed to fetch data. Please check your internet connection.");
     }
-}
+};
 
-fetch(url)
-//convert the response to json.. while dealing with apis json returns a structured data
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("weather-info").innerHTML = `
-        
-        `
-    })
+
+//Adding the event listner
+btn.addEventListener("click",(e)=>{
+    //agar value present hai toh
+    if(input.value){
+        getData(input.value);
+    }
+})
+
+
